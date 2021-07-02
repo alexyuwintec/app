@@ -7,6 +7,7 @@ module.exports = async (req, res) => {
         name: req.body.name,
         completed: false,
     };
+    console.log("Item name:", item.name);
 
     await db.storeItem(item);
     res.send(item);
