@@ -27,7 +27,10 @@ jobs:
       - name: Build and push
         env:
          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: heroku container:push -a alexyu-app web 
-          
+        run: heroku container:push -a alexyu-app web
+      - name: Release
+        env:
+         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: heroku container:release -a alexyu-app web 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
